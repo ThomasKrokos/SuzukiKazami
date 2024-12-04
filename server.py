@@ -26,7 +26,7 @@ class Process(object):
 
     def release_critical_section(self):
         if self.has_token and len(self.request_queue) > 0:
-            print(f"process{self.pid} releasing from the critical section and passing token to process{self.request_queue[0]["pid"]}\n")
+            print(f'process{self.pid} releasing from the critical section and passing token to process{self.request_queue[0]["pid"]}\n')
             self.token_manager.send_token({"old_pid": self.pid, "new_pid": self.request_queue[0]["pid"]})
             self.has_token = False
         elif len(self.request_queue) == 0:
